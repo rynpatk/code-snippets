@@ -5,6 +5,8 @@ import {
   Route,
   Link
 } from 'react-router-dom';
+import AceEditor from 'react-ace';
+
 
 import { Flex, Box, Text, theme } from '@chakra-ui/core';
 
@@ -58,9 +60,77 @@ export function Navigation() {
 
 function Home() {
   return (
-    <Flex flexDirection="column" p={5} bg={colors.blue['300']}>
-      <Text>Home</Text>
+    <>
+    <Flex flexDirection="row" justifyContent="space-around" my={5}>
+      <Box border="1px solid grey" width="60%">
+        <AceEditor
+          mode="javascript"
+          theme="tomorrow"
+          onChange={() => {}}
+          name="UNIQUE_ID_OF_DIV"
+          editorProps={{ $blockScrolling: true }}
+          style={{ width: '100%' }}
+        />
+      </Box>
+      <Box minHeight="10vh" border="1px solid grey" width="30%"></Box>
     </Flex>
+
+    <Flex flexDirection="row" justifyContent="space-around" my={5}>
+      <Box border="1px solid grey" width="60%">
+        <AceEditor
+          mode="javascript"
+          theme="tomorrow"
+          onChange={() => {}}
+          name="UNIQUE_ID_OF_DIV"
+          editorProps={{ $blockScrolling: true }}
+          style={{ width: '100%' }}
+        />
+      </Box>
+      <Box minHeight="10vh" border="1px solid grey" width="30%"></Box>
+    </Flex>
+
+    <Flex flexDirection="row" justifyContent="space-around" my={5}>
+      <Box border="1px solid grey" width="60%">
+        <AceEditor
+          mode="javascript"
+          theme="tomorrow"
+          onChange={() => {}}
+          name="UNIQUE_ID_OF_DIV"
+          editorProps={{ $blockScrolling: true }}
+          style={{ width: '100%' }}
+        />
+      </Box>
+      <Box minHeight="10vh" border="1px solid grey" width="30%"></Box>
+    </Flex>
+
+    <Flex flexDirection="row" justifyContent="space-around" my={5}>
+      <Box border="1px solid grey" width="60%">
+        <AceEditor
+          mode="javascript"
+          theme="tomorrow"
+          onChange={() => {}}
+          name="UNIQUE_ID_OF_DIV"
+          editorProps={{ $blockScrolling: true }}
+          style={{ width: '100%' }}
+        />
+      </Box>
+      <Box minHeight="10vh" border="1px solid grey" width="30%"></Box>
+    </Flex>
+
+    <Flex flexDirection="row" justifyContent="space-around" my={5}>
+      <Box border="1px solid grey" width="60%">
+        <AceEditor
+          mode="javascript"
+          theme="tomorrow"
+          onChange={() => {}}
+          name="UNIQUE_ID_OF_DIV"
+          editorProps={{ $blockScrolling: true }}
+          style={{ width: '100%' }}
+        />
+      </Box>
+      <Box minHeight="10vh" border="1px solid grey" width="30%"></Box>
+    </Flex>
+    </>
   );
 }
 
