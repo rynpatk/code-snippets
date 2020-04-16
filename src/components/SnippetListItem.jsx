@@ -1,9 +1,9 @@
 import React from 'react';
 import AceEditor from 'react-ace';
-import { Flex, Box, Textarea } from '@chakra-ui/core';
+import { Flex, Box, Textarea, theme } from '@chakra-ui/core';
 
 import "ace-builds/src-noconflict/mode-javascript";
-import "ace-builds/src-noconflict/theme-solarized_dark";
+import "ace-builds/src-noconflict/theme-dracula";
 
 const DEFAULT_JS = `import React from 'react';
 import { ThemeProvider } from '@chakra-ui/core';
@@ -30,19 +30,20 @@ const DEFAULT_NOTES = `This is an example of setting up the root ThemeProvider f
 export const SnippetListItem = () => {
   return (
     <Flex flexDirection="row" justifyContent="space-around" my={5}>
-      <Box border="1px solid grey" width="60%">
+      <Box width="60%">
         <AceEditor
           mode="javascript"
-          theme="solarized_dark" // TODO: light mode/dark mode toggle
+          theme="dracula" // TODO: light mode/dark mode toggle
           onChange={() => {}}
           name="UNIQUE_ID_OF_DIV"
+          showPrintMargin={false}
           editorProps={{ $blockScrolling: true }}
-          style={{ width: '100%' }}
+          style={{ width: '100%', borderRadius: 10, fontSize: 14, border: "1px solid black" }}
           value={DEFAULT_JS}
           highlightActiveLine={false}
         />
       </Box>
-      <Textarea minHeight="20vh" width="30%" value={DEFAULT_NOTES} />
+      <Textarea minHeight="25vh" width="30%" value={DEFAULT_NOTES} borderRadius={10} bg={theme.colors.yellow['50']} />
       {/* TODO: tags */}
     </Flex>
   );

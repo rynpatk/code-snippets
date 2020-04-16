@@ -7,10 +7,12 @@ import {
 } from 'react-router-dom';
 import { Flex, Box, Text, theme } from '@chakra-ui/core';
 
-import { SnippetListItem } from './SnippetListItem';
+import { SnippetsPage } from '../pages/SnippetsPage';
 
 // TODO: centralize
 const { colors } = theme;
+
+const BG_DARK = '#282A36';
 
 // TODO: core logged-out view
 // TODO: core logged-in view
@@ -18,10 +20,10 @@ const { colors } = theme;
 export const Navigation = () => {
   return (
     <Router>
-      <Flex width="100%" flexDirection="column" flex={1} bg={colors.yellow['50']}>
+      <Flex width="100%" flexDirection="column" flex={1} bg={BG_DARK}>
         <Flex justifyContent="space-between">
 
-          <Box border="3px solid black" borderRadius={5} padding={3} margin={8} backgroundColor="#fff" width="25%" height="25vh" position="sticky" top={8}>
+          <Box border="1px solid black" borderRadius={10} padding={3} margin={8} bg={colors.white} width="25%" height="25vh" position="sticky" top={8}>
             <Flex flexDirection="column">
               <Box py={3}>
                 <Link to="/">Home</Link>
@@ -32,7 +34,7 @@ export const Navigation = () => {
             </Flex>
           </Box>
 
-          <Box border="3px solid black" borderRadius={5} padding={3} margin={8} backgroundColor="#fff" width="80%" minHeight="100vh">
+          <Box border="1px solid black" borderRadius={10} padding={3} margin={8} bg={colors.gray['300']} width="80%" minHeight="100vh">
             <Flex flexDirection="column">
               {/* A <Switch> looks through its children <Route>s and
               renders the first one that matches the current URL. */}
@@ -42,7 +44,7 @@ export const Navigation = () => {
                   <About />
                 </Route>
                 <Route path="/">
-                  <Home />
+                  <SnippetsPage />
                 </Route>
               </Switch>
             </Flex>
@@ -50,18 +52,6 @@ export const Navigation = () => {
         </Flex>
       </Flex>
     </Router>
-  );
-}
-
-export const Home = () => {
-  return (
-    <>
-      <SnippetListItem />
-      <SnippetListItem />
-      <SnippetListItem />
-      <SnippetListItem />
-      <SnippetListItem />
-    </>
   );
 }
 
