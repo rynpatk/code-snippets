@@ -52,19 +52,20 @@ export const SnippetListItem = ({ id, text, notes }) => {
           name={id}
           showPrintMargin={false}
           editorProps={{ $blockScrolling: true }}
-          style={{ width: '100%', borderRadius: 10, fontSize: 14, border: "1px solid black" }}
+          style={{ width: '100%', fontSize: 14, border: "1px solid black", fontFamily: 'Roboto Mono' }}
           value={activeSnippet}
           highlightActiveLine={false}
         />
       </Box>
       <Flex pl={5} width="30%" flexDirection="column">
         <Textarea
+          fontFamily="Roboto Mono"
+          fontSize={14}
           p={5}
           minHeight="25vh"
           width="100%"
           value={activeNotes}
-          borderRadius={10}
-          bg={theme.colors.yellow['50']}
+          borderRadius={0}
           onChange={handleNotesChange}
           onBlur={handleBlur}
         />

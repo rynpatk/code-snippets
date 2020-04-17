@@ -9,7 +9,7 @@ const DEFAULT_SNIPPET = `// add your code snippet here!
 // automatically saves on blur :)
 `
 
-const DEFAULT_NOTES = 'any extra details?'
+const DEFAULT_NOTES = 'add extra details here'
 
 /**
  * The main control for creating a new snippet
