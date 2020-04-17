@@ -11,7 +11,7 @@ export const SnippetsPage = () => {
 
   return (
     <>
-      {data.snippets.map(snippet => <SnippetListItem />)}
+      {data.snippets.map(snippet => <SnippetListItem {...snippet} />)}
     </>
   );
 }

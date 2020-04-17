@@ -1,20 +1,32 @@
 import { gql } from '@apollo/client';
 
-// TODO: set up as vars
 export const CREATE_USER = gql`
-  mutation CREATE_USER {
-    insert_users(objects: [{username: "test", password: "test"}]) {
+  mutation CreateUser($username: String!, $password: String!) {
+    insert_users(objects: [{ username: $username, password: $password }]) {
       returning {
         id
+        username
       }
     }
   }
 `;
 
-// TODO: set up as vars
 export const CREATE_SNIPPET = gql`
-  mutation CREATE_SNIPPET {
-    insert_snippets(objects: [{text: "test", notes: "test"}]) {
+  mutation CreateSnippet($text: String, $notes: String) {
+    insert_snippets(objects: [{ text: $text, notes: $notes }]) {
+      returning {
+        id
+        text
+        notes
+        created_at
+      }
+    }
+  }
+`;
+
+export const UPDATE_SNIPPET = gql`
+  mutation UpdateSnippet($id: uuid!, $text: String, $notes: String) {
+    update_snippets(where: { id: { _eq: $id } }, _set: { text: $text, notes: $notes }) {
       returning {
         id
         text
