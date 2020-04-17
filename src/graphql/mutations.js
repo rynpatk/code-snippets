@@ -36,3 +36,13 @@ export const UPDATE_SNIPPET = gql`
     }
   }
 `;
+
+export const DELETE_SNIPPET = gql`
+  mutation DeleteSnippet($id: uuid!) {
+    delete_snippets(where: { id: { _eq: $id } }) {
+      returning {
+        id
+      }
+    }
+  }
+`;

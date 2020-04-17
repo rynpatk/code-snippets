@@ -4,6 +4,7 @@ import { Flex, Box, Textarea, theme } from '@chakra-ui/core';
 import { useMutation } from '@apollo/client';
 
 import { UPDATE_SNIPPET } from '../graphql/mutations';
+import { DeleteSnippetButton } from './DeleteSnippetButton';
 
 import "ace-builds/src-noconflict/mode-javascript";
 import "ace-builds/src-noconflict/theme-dracula";
@@ -39,7 +40,7 @@ export const SnippetListItem = ({ id, text, notes }) => {
   const [updateSnippet] = useMutation(UPDATE_SNIPPET);
 
   return (
-    <Flex flexDirection="row" justifyContent="space-around" my={5}>
+    <Flex flexDirection="row" justifyContent="center" my={5}>
       <Box width="60%">
         <AceEditor
           // readOnly
@@ -56,15 +57,22 @@ export const SnippetListItem = ({ id, text, notes }) => {
           highlightActiveLine={false}
         />
       </Box>
-      <Textarea
-        minHeight="25vh"
-        width="30%"
-        value={activeNotes}
-        borderRadius={10}
-        bg={theme.colors.yellow['50']}
-        onChange={handleNotesChange}
-        onBlur={handleBlur}
-      />
+      <Flex pl={5} width="30%" flexDirection="column">
+        <Textarea
+          p={5}
+          minHeight="25vh"
+          width="100%"
+          value={activeNotes}
+          borderRadius={10}
+          bg={theme.colors.yellow['50']}
+          onChange={handleNotesChange}
+          onBlur={handleBlur}
+        />
+        {/* dude wtf do padding and margin really work like this on web? */}
+        <Flex mt={5} ml={10} width="100%" justifyContent="flex-end">
+          <DeleteSnippetButton snippetId={id} />
+        </Flex>
+      </Flex>
     </Flex>
   );
 }

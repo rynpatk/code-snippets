@@ -1,7 +1,7 @@
 import React from 'react';
 import { useQuery } from '@apollo/client';
 
-import { SnippetListItem } from '../components/SnippetListItem';
+import { SnippetListItem } from '../components';
 import { GET_SNIPPETS } from '../graphql/queries';
 
 export const SnippetsPage = () => {

@@ -7,7 +7,8 @@ import {
 } from 'react-router-dom';
 import { Flex, Box, Text, theme } from '@chakra-ui/core';
 
-import { SnippetsPage } from '../pages/SnippetsPage';
+import { SnippetsPage } from '../pages';
+import { CreateSnippetButton } from '../components';
 
 // TODO: centralize
 const { colors } = theme;
@@ -20,10 +21,14 @@ const BG_DARK = '#282A36';
 export const Navigation = () => {
   return (
     <Router>
-      <Flex width="100%" flexDirection="column" flex={1} bg={BG_DARK}>
+      <Flex width="100%" flexDirection="column" flex={1}>
+        <Flex justifyContent="center" position="fixed" zIndex={100} bottom={10} left={10}>
+          <CreateSnippetButton />
+        </Flex>
+
         <Flex justifyContent="space-between">
 
-          <Box border="1px solid black" borderRadius={10} padding={3} margin={8} bg={colors.white} width="25%" height="25vh" position="sticky" top={8}>
+          <Box padding={3} margin={8} bg={colors.white} width="25%" height="25vh" position="sticky" top={8}>
             <Flex flexDirection="column">
               <Box py={3}>
                 <Link to="/">Home</Link>
