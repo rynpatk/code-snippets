@@ -10,11 +10,11 @@ export const GET_USERS = gql`
 
 export const GET_SNIPPETS = gql`
   query GET_SNIPPETS {
-  snippets {
-    id
-    text
-    notes
-    created_at
+    snippets(order_by: { created_at: asc }) {
+      id
+      text
+      notes
+      created_at
+    }
   }
-}
 `;
