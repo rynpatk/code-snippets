@@ -21,6 +21,21 @@ export const SnippetListItem = ({ id, text, notes }) => {
   const [activeSnippet, setActiveSnippet] = useState(text);
   const [activeNotes, setActiveNotes] = useState(notes);
 
+  const handleBlur = () => {
+    // only update if the snippet or notes have actually changed
+    if (activeSnippet !== text || activeNotes !== notes) {
+      updateSnippet({ variables: { id, text: activeSnippet, notes: activeNotes } });
+    }
+  }
+
+  const handleEditorChange = (newValue) => {
+    setActiveSnippet(newValue);
+  }
+
+  const handleNotesChange = (event) => {
+    setActiveNotes(event.target.value);
+  };
+
   const [updateSnippet] = useMutation(UPDATE_SNIPPET);
 
   return (
@@ -28,15 +43,11 @@ export const SnippetListItem = ({ id, text, notes }) => {
       <Box width="60%">
         <AceEditor
           // readOnly
-          onBlur={(_event, _editor) => {
-            updateSnippet({ variables: { id, text: activeSnippet, notes: activeNotes } });
-          }}
+          onBlur={handleBlur}
           debounceChangePeriod={50}
           mode="javascript"
           theme="dracula"
-          onChange={(newValue) => {
-            setActiveSnippet(newValue);
-          }}
+          onChange={handleEditorChange}
           name={id}
           showPrintMargin={false}
           editorProps={{ $blockScrolling: true }}
@@ -45,7 +56,15 @@ export const SnippetListItem = ({ id, text, notes }) => {
           highlightActiveLine={false}
         />
       </Box>
-      <Textarea minHeight="25vh" width="30%" value={activeNotes} borderRadius={10} bg={theme.colors.yellow['50']} />
+      <Textarea
+        minHeight="25vh"
+        width="30%"
+        value={activeNotes}
+        borderRadius={10}
+        bg={theme.colors.yellow['50']}
+        onChange={handleNotesChange}
+        onBlur={handleBlur}
+      />
     </Flex>
   );
 }
