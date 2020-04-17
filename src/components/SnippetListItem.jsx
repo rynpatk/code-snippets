@@ -40,7 +40,8 @@ export const SnippetListItem = ({ id, text, notes }) => {
   const [updateSnippet] = useMutation(UPDATE_SNIPPET);
 
   return (
-    <Flex flexDirection="row" justifyContent="center" my={5}>
+    <Box py={5}>
+      <Flex flexDirection="row" justifyContent="center" my={5}>
       <Box width="60%">
         <AceEditor
           // readOnly
@@ -75,5 +76,6 @@ export const SnippetListItem = ({ id, text, notes }) => {
         </Flex>
       </Flex>
     </Flex>
+    </Box>
   );
 }
